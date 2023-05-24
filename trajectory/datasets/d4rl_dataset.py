@@ -76,6 +76,7 @@ class DiscretizedDataset(Dataset):
             dataset["rewards"],
             dataset["dones"]
         )
+        print("\n\nTraj lengths: ", traj_lengths)
         self.cache_path = cache_path
         self.cache_name = f"{env_name}_{num_bins}_{seq_len}_{strategy}_{discount}"
 

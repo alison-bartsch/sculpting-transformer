@@ -7,6 +7,7 @@ from tqdm.auto import trange
 
 def d4rl_dataset(env):
     dataset = env.get_dataset()
+    print("\nDataset: ", dataset) # added print statement
     N = dataset['rewards'].shape[0]
 
     obs_, action_, reward_ = [], [], []
