@@ -13,6 +13,8 @@ from trajectory.utils.env import create_env
 
 
 def join_trajectory(states, actions, rewards, discount=0.99):
+    print("\nState Shape: ", states.shape)
+    print("Actions shape: ", actions.shape)
     traj_length = states.shape[0]
     # I can vectorize this for all dataset as once,
     # but better to be safe and do it once and slow and right (and cache it)
@@ -26,6 +28,7 @@ def join_trajectory(states, actions, rewards, discount=0.99):
         values[t] = (rewards[t + 1:].T * discounts[:-t - 1]).sum()
 
     joined_transition = np.concatenate([states, actions, rewards, values], axis=-1)
+    print("joined transition shape: ", joined_transition.shape)
 
     return joined_transition
 
